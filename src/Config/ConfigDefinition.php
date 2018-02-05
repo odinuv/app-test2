@@ -18,8 +18,7 @@ class ConfigDefinition implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('foo')
-                    ->isRequired()
-                    ->cannotBeEmpty()
+                    ->defaultValue('baz')
                 ->end()
             ->end()
         ;
