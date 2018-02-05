@@ -1,5 +1,5 @@
-FROM quay.io/keboola/docker-custom-python:latest
+FROM php:7-cli
 
 COPY . /code/
 WORKDIR /code/
-CMD ["python", "-u", "/code/main.py"]
+CMD ["php", "/code/main.php"]
