@@ -1,5 +1,5 @@
-FROM quay.io/keboola/docker-custom-r:latest
+FROM quay.io/keboola/docker-custom-python:latest
 
 COPY . /code/
 WORKDIR /code/
-CMD ["Rscript", "/code/main.R"]
+CMD ["python", "-u", "/code/main.php"]
