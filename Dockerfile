@@ -17,7 +17,8 @@ COPY . /code/
 COPY docker/php.ini /usr/local/etc/php/php.ini
 COPY docker/composer-install.sh /tmp/composer-install.sh
 
-RUN /tmp/composer-install.sh \
+RUN chmod a+x /tmp/composer-install.sh \
+	&& /tmp/composer-install.sh \
 	&& php composer.phar --no-interaction install \
 	&& rm -f composer.phar
 
