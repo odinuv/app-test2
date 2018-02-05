@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^7.1",
-        "monolog/logger": "^1.23",
+        "monolog/monolog": "^1.23",
         "symfony/config": "^4.0",
         "symfony/serializer": "^4.0"
     },

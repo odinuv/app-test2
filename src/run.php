@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-use GuzzleHttp\Client;
-use Keboola\MyApplication\Exception\UserException;
-use Keboola\MyApplication\Application;
+use Keboola\MyComponent\Exception\UserException;
+use Keboola\MyComponent\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $dataDir = getenv('KBC_DATADIR') === false ? '/data/' : getenv('KBC_DATADIR');
 $configPath = $dataDir . 'config.json';
-$config = new \Keboola\MyApplication\Config($configPath);
+$config = new \Keboola\MyComponent\Config($configPath);
 
 try {
-    $client = new Client();
     $app = new Application($config, $dataDir);
     $app->run();
     exit(0);

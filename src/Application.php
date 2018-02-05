@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Keboola\MyComponent;
 
 use Monolog\Logger;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
 
 class Application
 {

@@ -7,7 +7,8 @@ WORKDIR /code
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         unzip \
-   && rm -r /var/lib/apt/lists/*
+        wget \
+	&& rm -r /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php \
   && mv /code/composer.phar /usr/local/bin/composer
@@ -18,6 +19,6 @@ COPY docker/composer-install.sh /tmp/composer-install.sh
 
 RUN /tmp/composer-install.sh \
 	&& php composer.phar --no-interaction install \
-	&& rm -f composer.phar \
+	&& rm -f composer.phar
 
-CMD php /code/src/run.php
+CMD ["php", "/code/src/run.php"]
