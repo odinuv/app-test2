@@ -2,20 +2,24 @@
 
 declare(strict_types=1);
 
-use Keboola\MyComponent\Exception\UserException;
-use Keboola\MyComponent\Application;
+use Keboola\Component\UserException;
+use MyComponent\Component;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$dataDir = getenv('KBC_DATADIR') === false ? '/data/' : getenv('KBC_DATADIR');
-$configPath = $dataDir . 'config.json';
-$config = new \Keboola\MyComponent\Config($configPath);
-
 try {
-    $app = new Application($config, $dataDir);
+    throw new UserException("suicide");
+    $app = new Component();
     $app->run();
     exit(0);
 } catch (UserException $e) {
     echo $e->getMessage();
     exit(1);
+} catch (Throwable $e) {
+    echo get_class($e) . ':' . $e->getMessage();
+    echo "\nFile: " . $e->getFile();
+    echo "\nLine: " . $e->getLine();
+    echo "\nCode: " . $e->getCode();
+    echo "\nTrace: " . $e->getTraceAsString() . "\n";
+    exit(2);
 }
