@@ -16,10 +16,10 @@ try {
     echo $e->getMessage();
     exit(1);
 } catch (Throwable $e) {
-    echo get_class($e) . ':' . $e->getMessage();
-    echo "\nFile: " . $e->getFile();
-    echo "\nLine: " . $e->getLine();
-    echo "\nCode: " . $e->getCode();
-    echo "\nTrace: " . $e->getTraceAsString() . "\n";
+    fwrite(STDERR, get_class($e) . ':' . $e->getMessage());
+    fwrite(STDERR, "\nFile: " . $e->getFile());
+    fwrite(STDERR, "\nLine: " . $e->getLine());
+    fwrite(STDERR, "\nCode: " . $e->getCode());
+    fwrite(STDERR, "\nTrace: " . $e->getTraceAsString() . "\n");
     exit(2);
 }
