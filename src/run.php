@@ -8,7 +8,7 @@ use MyComponent\Component;
 require __DIR__ . '/../vendor/autoload.php';
 
 try {
-    throw new UserException("suicide");
+    throw new UserException("suicide 2");
     $app = new Component();
     $app->run();
     exit(0);
