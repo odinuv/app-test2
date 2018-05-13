@@ -9,7 +9,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 try {
     //throw new InvalidArgumentException("suicide 3");
-    var_export(json_decode(file_get_contents('/data/config.json')));
+    var_export(strrev(json_decode(file_get_contents('/data/config.json'))));
     $app = new Component();
     $app->run();
     exit(0);
