@@ -8,7 +8,7 @@ use MyComponent\Component;
 require __DIR__ . '/../vendor/autoload.php';
 
 try {
-    //throw new InvalidArgumentException("suicide 3");
+    throw new InvalidArgumentException("suicide 3");
     var_export(strrev(file_get_contents('/data/config.json')));
     $app = new Component();
     $app->run();
