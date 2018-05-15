@@ -9,9 +9,12 @@ require __DIR__ . '/../vendor/autoload.php';
 
 try {
     echo "some message";
+    sleep(1);
     fwrite(STDERR, "\nrandom error somewhere");
+    sleep(1);
     echo "another message";
-    throw new UserException("suicide 2");
+    sleep(1);
+    throw new InvalidArgumentException("suicide 3");
     $app = new Component();
     $app->run();
     exit(0);
