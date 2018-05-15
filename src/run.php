@@ -8,13 +8,12 @@ use MyComponent\Component;
 require __DIR__ . '/../vendor/autoload.php';
 
 try {
-    throw new InvalidArgumentException("suicide 3");
-    var_export(strrev(file_get_contents('/data/config.json')));
+    throw new UserException("suicide 2");
     $app = new Component();
     $app->run();
     exit(0);
 } catch (UserException $e) {
-    echo $e->getMessage();
+    fwrite(STDERR, $e->getMessage());
     exit(1);
 } catch (Throwable $e) {
     fwrite(STDERR, get_class($e) . ':' . $e->getMessage());
