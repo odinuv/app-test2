@@ -14,7 +14,7 @@ try {
     sleep(1);
     echo "another message";
     sleep(1);
-    throw new InvalidArgumentException("suicide 3");
+    throw new UserException("suicide 2");
     $app = new Component();
     $app->run();
     exit(0);
