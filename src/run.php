@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Keboola\Component\Logger;
+use Keboola\Component\UserException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -15,11 +16,11 @@ try {
     $logger->error("error");
     sleep(1);
     $logger->info("second");
-    throw new Exception("suicide 2");
+    throw new UserException("suicide 2");
     $app = new MyComponent\Component($logger);
     $app->run();
     exit(0);
-} catch (\Keboola\Component\UserException $e) {
+} catch (UserException $e) {
     $logger->error($e->getMessage());
     exit(1);
 } catch (\Throwable $e) {
