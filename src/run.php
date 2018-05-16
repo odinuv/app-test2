@@ -2,30 +2,36 @@
 
 declare(strict_types=1);
 
-use Keboola\Component\UserException;
-use MyComponent\Component;
+use Keboola\Component\Logger;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$logger = new Logger();
 try {
-    echo "some message";
+    $logger->info("first");
     sleep(1);
-    fwrite(STDERR, "\nrandom error somewhere");
+    $logger->warn("warning");
     sleep(1);
-    echo "another message";
+    $logger->error("error");
     sleep(1);
-    throw new UserException("suicide 2");
-    $app = new Component();
+    $logger->info("second");
+    throw new Exception("suicide 2");
+    $app = new MyComponent\Component($logger);
     $app->run();
     exit(0);
-} catch (UserException $e) {
-    fwrite(STDERR, $e->getMessage());
+} catch (\Keboola\Component\UserException $e) {
+    $logger->error($e->getMessage());
     exit(1);
-} catch (Throwable $e) {
-    fwrite(STDERR, get_class($e) . ':' . $e->getMessage());
-    fwrite(STDERR, "\nFile: " . $e->getFile());
-    fwrite(STDERR, "\nLine: " . $e->getLine());
-    fwrite(STDERR, "\nCode: " . $e->getCode());
-    fwrite(STDERR, "\nTrace: " . $e->getTraceAsString() . "\n");
+} catch (\Throwable $e) {
+    $logger->critical(
+        get_class($e) . ':' . $e->getMessage(),
+        [
+            'errFile' => $e->getFile(),
+            'errLine' => $e->getLine(),
+            'errCode' => $e->getCode(),
+            'errTrace' => $e->getTraceAsString(),
+            'errPrevious' => $e->getPrevious() ? get_class($e->getPrevious()) : '',
+        ]
+    );
     exit(2);
 }
