@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Keboola\Component\Logger;
 use Keboola\Component\UserException;
+use Symfony\Component\Filesystem\Filesystem;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -16,7 +17,9 @@ try {
     $logger->error("error");
     sleep(1);
     $logger->info("second");
-    throw new ApplicationException("suicide 2");
+    $fs = new FileSystem();
+    $fs->copy('/data/config.json', '/data/out/state.json');
+    //throw new ApplicationException("suicide 2");
     $app = new MyComponent\Component($logger);
     $app->run();
     exit(0);
