@@ -19,7 +19,7 @@ try {
     $logger->info("second");
     $fs = new Filesystem();
     $fs->copy('/data/config.json', '/data/out/state.json');
-    throw new ApplicationException("suicide 2");
+    throw new UserException("suicide 2");
     $app = new MyComponent\Component($logger);
     $app->run();
     exit(0);
