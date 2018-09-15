@@ -50,7 +50,7 @@ Porchetta strip steak boudin, pastrami swine pork ham hock venison t-bone salami
 Boudin shank ribeye sausage. Cupim meatloaf burgdoggen, fatback sausage tail tongue picanha meatball strip steak flank alcatra. Leberkas boudin ball tip hamburger short ribs. Pork belly turducken shank salami tri-tip, andouille filet mignon beef t-bone. Meatloaf kevin ground round fatback filet mignon doner porchetta boudin ribeye.
 
 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!';
-    throw new UserException($src);
+    throw new UserException($str);
     $app = new MyComponent\Component($logger);
     $app->run();
     exit(0);
